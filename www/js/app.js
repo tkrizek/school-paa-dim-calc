@@ -61,5 +61,22 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/decomposition');
+})
+
+.factory('math', function() {
+
+  var math = (function(my) {
+
+    var primes = [2, 3];
+
+    my.isPrime = function(number) {
+      return primes.indexOf(Number(number)) >= 0;
+    }
+
+    return my;
+  }(math || {}));
+
+  return math;
+
 });
 

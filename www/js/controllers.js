@@ -44,10 +44,13 @@ angular.module('dim-calc.controllers', [])
   ];
 })
 
-.controller('PrimeCtrl', function($scope, $stateParams, $state) {
-  $scope.number = $stateParams.number || null;
-  
-  $scope.compute = function (){
-    $scope.result = '' + $scope.number + ' may or may not be a prime';
-  }
-});
+.controller('PrimeCtrl', ['$scope', '$stateParams', '$state', 'math',
+  function($scope, $stateParams, $state, math) {
+    $scope.number = $stateParams.number || null;
+    
+    $scope.compute = function (){
+      console.log(math.isPrime($scope.number));
+      $scope.result = '' + $scope.number + ' is ' + (math.isPrime($scope.number) ? '' : 'not') + ' a prime';
+    }
+  }]
+);
