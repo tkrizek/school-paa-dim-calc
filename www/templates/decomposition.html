@@ -1,0 +1,21 @@
+<ion-view title="Kanonický rozklad">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header" ng-controller="PrimeCtrl">
+
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item item-input">
+          <input type="tel" ng-model="number" placeholder="Číslo">
+        </label>
+        <button class="button icon-left ion-calculator button-positive" ng-click="compute()">
+          Vypočítej
+        </button>
+      </div>
+    </div>
+
+    <h2>{{result}}</h2>
+    
+  </ion-content>
+</ion-view>
