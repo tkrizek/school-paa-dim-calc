@@ -15,7 +15,13 @@
       </div>
     </div>
 
-    <h2>{{result}}</h2>
+    <div ng-if="isPrime(number)">
+      {{number}} je prvočíslo
+    </div>
+
+    <div ng-if="!isPrime(number)">
+      rozklad čísla {{number}}
+    </div>
     
   </ion-content>
 </ion-view>

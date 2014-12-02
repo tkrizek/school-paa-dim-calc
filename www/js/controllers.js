@@ -50,9 +50,16 @@ angular.module('dim-calc.controllers', [])
   function($scope, $stateParams, $state, math) {
     $scope.number = $stateParams.number || null;
     
-    $scope.compute = function (){
-      console.log(math.isPrime($scope.number));
-      $scope.result = '' + $scope.number + ' is ' + (math.isPrime($scope.number) ? '' : 'not') + ' a prime';
+    $scope.compute = function () {
+      var n = $scope.number;
+      if (math.isPrime(n)) {
+        $scope.result = n + ' je prvočíslo';
+      }
+      //$scope.result = '' + $scope.number + ' is ' + (math.isPrime($scope.number) ? '' : 'not') + ' a prime';
+    }
+
+    $scope.isPrime = function(number) {
+      return math.isPrime(number);
     }
   }]
 );

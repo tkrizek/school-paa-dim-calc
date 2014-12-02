@@ -69,11 +69,43 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
 
   var math = (function(my) {
 
-    var primes = [2, 3];
+    var primes = [2];
+
+    // generate primes so target is equal or less than last prime
+    my.generatePrimes = function(target) {
+      var n = primes[primes.length - 1]
+      while (true) {
+        // test if the new number is prime
+        var isPrime = true;
+        for (var i = 0; i < primes.length; i++) {
+          if (n % primes[i] == 0) {
+            isPrime = false;
+            break;
+          }
+        }
+        if (isPrime) {
+          primes.push(n);
+          if (n >= target) break;
+        }
+        n++;
+      };
+
+      return primes;
+    };
 
     my.isPrime = function(number) {
-      return primes.indexOf(Number(number)) >= 0;
-    }
+      if (number > primes[primes.length - 1]) {
+        this.generatePrimes(number);
+      }
+      for (var i = 0; i < primes.length; i++) {
+        if (primes[i] == number) {
+          return true;
+        } else if (primes[i] > number) {
+          return false;
+        }
+      }
+      return false;
+    };
 
     return my;
   }(math || {}));
