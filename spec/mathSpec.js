@@ -1,13 +1,13 @@
+'use strict';
+
 describe('math service', function() {
-  var $scope = null;
-  var math = null;
+  var math;
 
   //you need to indicate your module in a test
   beforeEach(module('dim-calc'));
 
-  beforeEach(inject(function($rootScope, math) {
-    $scope = $rootScope.$new();
-    this.math = math;
+  beforeEach(inject(function(_math_) {
+    math = _math_;
   }));
 
   it('should have a working math service', function() {

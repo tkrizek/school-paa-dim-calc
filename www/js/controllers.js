@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('dim-calc.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
