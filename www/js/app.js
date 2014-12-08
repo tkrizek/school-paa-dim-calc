@@ -65,6 +65,20 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
   $urlRouterProvider.otherwise('/app/decomposition');
 })
 
+.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+})
+
 .factory('math', function() {
 
   var math = (function(my) {
@@ -130,6 +144,10 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       }
 
       return decomposition;
+    }
+
+    my.nsd = function(numbers) {
+
     }
 
     return my;

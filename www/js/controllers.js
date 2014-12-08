@@ -63,6 +63,7 @@ angular.module('dim-calc.controllers', [])
     }
 
     $scope.decompose = function(number) {
+      $scope.number = "";
       if (!number || isNaN(number)) {
         $scope.decomposed = false;
         return;

@@ -7,7 +7,7 @@
     <div class="list">
       <div class="item item-input-inset">
         <label class="item item-input">
-          <input type="tel" ng-model="number" placeholder="Číslo">
+          <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="decompose(number)">
         </label>
         <button class="button icon-left ion-calculator button-positive" ng-click="decompose(number)">
           Vypočítej
