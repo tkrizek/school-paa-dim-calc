@@ -107,6 +107,31 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       return false;
     };
 
+    my.decompose = function(number) {
+      var decomposition = {};
+      var sqrt = Math.sqrt(number);
+      if (sqrt > primes[primes.length - 1]) {
+        this.generatePrimes(sqrt);
+      }
+
+      for (var i = 0; primes[i] <= sqrt && i < primes.length; i++) {
+        while (number % primes[i] == 0) {
+          number /= primes[i];
+          if (decomposition[primes[i]] == undefined) {
+            decomposition[primes[i]] = 1;
+          } else {
+            decomposition[primes[i]] += 1;
+          }
+        }
+      }
+
+      if (number != 1) {  // is prime
+        decomposition[number] = 1;
+      }
+
+      return decomposition;
+    }
+
     return my;
   }(math || {}));
 

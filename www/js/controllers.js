@@ -53,13 +53,25 @@ angular.module('dim-calc.controllers', [])
     $scope.compute = function () {
       var n = $scope.number;
       if (math.isPrime(n)) {
+        // TODO
         $scope.result = n + ' je prvočíslo';
       }
-      //$scope.result = '' + $scope.number + ' is ' + (math.isPrime($scope.number) ? '' : 'not') + ' a prime';
     }
 
     $scope.isPrime = function(number) {
       return math.isPrime(number);
+    }
+
+    $scope.decompose = function(number) {
+      if (!number || isNaN(number)) {
+        $scope.decomposed = false;
+        return;
+      }
+      var primes = math.decompose(number);
+      $scope.primes = Object.keys(primes);
+      $scope.multiples = primes;
+      $scope.decomposed = true;
+      $scope.calculated = number;
     }
   }]
 );

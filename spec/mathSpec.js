@@ -27,6 +27,10 @@ describe('math service', function() {
     expect(math.isPrime(1549)).toBe(true);
   });
 
-  it('decompose a composite number to primes', function() { });
+  it('decompose a composite number to primes', function() {
+    expect(math.decompose(84)).toEqual({2: 2, 3: 1, 7: 1});
+    expect(math.decompose(18576)).toEqual({2: 4, 3: 3, 43: 1});
+    expect(math.decompose(1549)).toEqual({1549: 1});
+  });
 
 });
