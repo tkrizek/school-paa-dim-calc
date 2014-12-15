@@ -1,0 +1,35 @@
+<ion-view title="NSD, NSN">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header" ng-controller="NsdNsnController">
+
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item item-input">
+          <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="add(number)">
+        </label>
+        <button class="button icon-left ion-calculator button-positive" ng-click="add(number)">
+          Přidej
+        </button>
+        <button class="item button icon-left ion-trash-a button-assertive" ng-click="removeAll()">
+          Smazat
+        </button>
+        
+      </div>
+
+      <div class="item" ng-if="numbers.length > 0">
+        <button class="button button-stable icon-right ion-close" ng-click="remove(number)" ng-repeat="number in numbers">
+          {{number}} 
+        </button>
+      </div>
+
+      <div class="item" ng-if="numbers.length > 0">
+        <h2>NSD: {{nsd}}</h2><br>
+        <h2>NSN: {{nsn}}</h2>
+      </div>
+
+    </div>
+    
+  </ion-content>
+</ion-view>

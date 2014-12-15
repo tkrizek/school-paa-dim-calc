@@ -46,17 +46,9 @@ angular.module('dim-calc.controllers', [])
   ];
 })
 
-.controller('PrimeCtrl', ['$scope', '$stateParams', '$state', 'math',
-  function($scope, $stateParams, $state, math) {
+.controller('PrimeCtrl', ['$scope', '$stateParams', 'math',
+  function($scope, $stateParams, math) {
     $scope.number = $stateParams.number || null;
-    
-    $scope.compute = function () {
-      var n = $scope.number;
-      if (math.isPrime(n)) {
-        // TODO
-        $scope.result = n + ' je prvočíslo';
-      }
-    }
 
     $scope.isPrime = function(number) {
       return math.isPrime(number);
@@ -75,4 +67,34 @@ angular.module('dim-calc.controllers', [])
       $scope.calculated = number;
     }
   }]
-);
+)
+
+.controller('NsdNsnController', ['$scope', '$stateParams', 'math',
+  function($scope, $stateParams, math) {
+    $scope.numbers = [];
+
+    var calculate = function calculate() {
+      $scope.nsd = math.nsd($scope.numbers);
+    };
+
+    $scope.add = function(number) {
+      $scope.number = "";
+      if (!number || isNaN(number)) return;
+      if ($scope.numbers.indexOf(number) == -1) {
+        $scope.numbers.push(number);
+      }
+      calculate();
+    }
+
+    $scope.remove = function(number) {
+      var index = $scope.numbers.indexOf(number);
+      if (index > -1) {
+        $scope.numbers.splice(index, 1);
+        calculate();
+      }
+    }
+
+    $scope.removeAll = function() {
+      $scope.numbers = [];
+    }
+  }]);

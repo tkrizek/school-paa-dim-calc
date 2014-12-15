@@ -33,4 +33,12 @@ describe('math service', function() {
     expect(math.decompose(1549)).toEqual({1549: 1});
   });
 
+  it('finds greatest common divisor for a list of numbers', function () {
+    expect(math.nsd([65])).toBe(65);
+    expect(math.nsd([123, 123])).toBe(123);
+    expect(math.nsd([144, 540])).toBe(36);
+    expect(math.nsd([10200, 15300, 66300, 20400])).toBe(5100);
+    expect(math.nsd([122, 544, 321, 98])).toBe(1);
+  })
+
 });

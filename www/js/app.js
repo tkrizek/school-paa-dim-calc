@@ -42,6 +42,16 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       }
     })
 
+    .state('app.nsd_nsn', {
+      url: "/nsd_nsn",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/nsd_nsn.html",
+          controller: 'NsdNsnController'
+        }
+      }
+    })
+
     .state('app.playlists', {
       url: "/playlists",
       views: {
@@ -147,7 +157,33 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
     }
 
     my.nsd = function(numbers) {
+      var decomposed_numbers = [];
+      var primes = {};  // primes that appear in all numbers
+      var nsd = 1;
 
+      // decompose all numbers to primes
+      for (var i = 0; i < numbers.length; i++) {
+        decomposed_numbers[i] = this.decompose(numbers[i]);
+
+        // add primes of this number to a list of all primes
+        Object.keys(decomposed_numbers[i]).forEach(function (prime) {
+          prime = Number(prime);
+          primes[prime] = prime;  // use key to prevent duplication
+        });
+      }
+
+      // get maximum exponent for each prime
+      Object.keys(primes).forEach(function(prime) {
+        var count_total = Number.MAX_VALUE;
+        for (var j = 0; j < decomposed_numbers.length; j++) {
+          var count = decomposed_numbers[j][prime] || 0;
+          if (count_total > count) count_total = count;
+          if (count == 0) break;
+        }
+        nsd *= Math.pow(prime, count_total);
+      });
+
+      return nsd;
     }
 
     return my;
