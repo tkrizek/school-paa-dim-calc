@@ -186,6 +186,27 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       return nsd;
     }
 
+    my.nsn = function(numbers) {
+      var primes = {};  // all primes of the numbers (in highest multiple)
+      var decomposed;
+      var nsn = 1;
+
+      for (var i = 0; i < numbers.length; i++) {
+        decomposed = this.decompose(numbers[i]);
+        Object.keys(decomposed).forEach(function(prime) {
+          if (primes[prime] < decomposed[prime] || primes[prime] == undefined) {
+            primes[prime] = decomposed[prime];
+          }
+        });
+      }
+
+      Object.keys(primes).forEach(function(prime) {
+        nsn *= Math.pow(prime, primes[prime]);
+      });
+
+      return nsn;
+    }
+
     return my;
   }(math || {}));
 

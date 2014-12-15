@@ -75,6 +75,7 @@ angular.module('dim-calc.controllers', [])
 
     var calculate = function calculate() {
       $scope.nsd = math.nsd($scope.numbers);
+      $scope.nsn = math.nsn($scope.numbers);
     };
 
     $scope.add = function(number) {

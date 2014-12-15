@@ -33,7 +33,7 @@ describe('math service', function() {
     expect(math.decompose(1549)).toEqual({1549: 1});
   });
 
-  it('finds greatest common divisor for a list of numbers', function () {
+  it('calculates greatest common divisor for a list of numbers', function () {
     expect(math.nsd([65])).toBe(65);
     expect(math.nsd([123, 123])).toBe(123);
     expect(math.nsd([144, 540])).toBe(36);
@@ -41,4 +41,11 @@ describe('math service', function() {
     expect(math.nsd([122, 544, 321, 98])).toBe(1);
   })
 
+  it('calculates least common multiple for a list of numbers', function() {
+    expect(math.nsn([65])).toBe(65);
+    expect(math.nsn([123, 123])).toBe(123);
+    expect(math.nsn([144, 540])).toBe(2160);
+    expect(math.nsn([10200, 15300, 66300, 20400])).toBe(795600);
+    expect(math.nsn([122, 221, 107])).toBe(2884934);
+  })
 });
