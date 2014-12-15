@@ -39,7 +39,7 @@ describe('math service', function() {
     expect(math.nsd([144, 540])).toBe(36);
     expect(math.nsd([10200, 15300, 66300, 20400])).toBe(5100);
     expect(math.nsd([122, 544, 321, 98])).toBe(1);
-  })
+  });
 
   it('calculates least common multiple for a list of numbers', function() {
     expect(math.nsn([65])).toBe(65);
@@ -47,5 +47,23 @@ describe('math service', function() {
     expect(math.nsn([144, 540])).toBe(2160);
     expect(math.nsn([10200, 15300, 66300, 20400])).toBe(795600);
     expect(math.nsn([122, 221, 107])).toBe(2884934);
+  });
+
+  it('calculates variables of Euklid alg. for a/b', function() {
+    expect(math.euklid(30, 17)).toEqual([
+      {a: 30, b: 17, q: 1, r: 13},
+      {a: 17, b: 13, q: 1, r: 4},
+      {a: 13, b: 4, q: 3, r: 1},
+      {a: 4, b: 1, q: 4, r: 0}]);
+
+    expect(math.euklid(12084, 8604)).toEqual([
+      {a: 12084, b: 8604, q: 1, r: 3480},
+      {a: 8604, b: 3480, q: 2, r: 1644},
+      {a: 3480, b: 1644, q: 2, r: 192},
+      {a: 1644, b: 192, q: 8, r: 108},
+      {a: 192, b: 108, q: 1, r: 84},
+      {a: 108, b: 84, q: 1, r: 24},
+      {a: 84, b: 24, q: 3, r: 12},
+      {a: 24, b: 12, q: 2, r: 0}]);
   })
 });

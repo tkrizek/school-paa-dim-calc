@@ -97,11 +97,13 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
 
     // generate primes so target is equal or less than last prime
     my.generatePrimes = function(target) {
-      var n = primes[primes.length - 1]
-      while (true) {
-        // test if the new number is prime
+      var n = primes[primes.length - 1];
+      
+      // test if n is prime by looking for a prime divisor
+      while (++n) {
+        var sqrt = Math.sqrt(n);
         var isPrime = true;
-        for (var i = 0; i < primes.length; i++) {
+        for (var i = 0; i < primes.length && primes[i] <= sqrt; i++) {
           if (n % primes[i] == 0) {
             isPrime = false;
             break;
@@ -111,16 +113,18 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
           primes.push(n);
           if (n >= target) break;
         }
-        n++;
-      };
+      }
 
       return primes;
     };
 
     my.isPrime = function(number) {
+      // generate more primes if the last cached prime is not higher than current number
       if (number > primes[primes.length - 1]) {
         this.generatePrimes(number);
       }
+
+      // look for the number in the list of primes
       for (var i = 0; i < primes.length; i++) {
         if (primes[i] == number) {
           return true;
@@ -138,18 +142,16 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
         this.generatePrimes(sqrt);
       }
 
+      // test if number is divisible by primes up to square root of the number
       for (var i = 0; primes[i] <= sqrt && i < primes.length; i++) {
         while (number % primes[i] == 0) {
           number /= primes[i];
-          if (decomposition[primes[i]] == undefined) {
-            decomposition[primes[i]] = 1;
-          } else {
-            decomposition[primes[i]] += 1;
-          }
+          decomposition[primes[i]] = (decomposition[primes[i]] || 0) + 1;
         }
       }
 
-      if (number != 1) {  // is prime
+      // if the number wasn't divided all the way to 1, it has to be prime
+      if (number != 1) {
         decomposition[number] = 1;
       }
 
@@ -193,6 +195,8 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
 
       for (var i = 0; i < numbers.length; i++) {
         decomposed = this.decompose(numbers[i]);
+
+        // set highest multiple of prime number
         Object.keys(decomposed).forEach(function(prime) {
           if (primes[prime] < decomposed[prime] || primes[prime] == undefined) {
             primes[prime] = decomposed[prime];
@@ -200,11 +204,33 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
         });
       }
 
+      // multiply all the prime compositors to get lcm (nsn)
       Object.keys(primes).forEach(function(prime) {
         nsn *= Math.pow(prime, primes[prime]);
       });
 
       return nsn;
+    }
+
+    my.euklid = function(a, b) {
+      var params = [];
+      var step = {};
+
+      step.a = a;
+      step.b = b;
+
+      do {
+        step.q = Math.floor(step.a / step.b);
+        step.r = step.a % step.b;
+
+        // deep copy of step object
+        params.push(JSON.parse(JSON.stringify(step)));
+
+        step.a = step.b;
+        step.b = step.r;
+      } while(step.r != 0);
+
+      return params;
     }
 
     return my;
