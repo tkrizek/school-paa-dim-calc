@@ -69,8 +69,8 @@ angular.module('dim-calc.controllers', [])
   }]
 )
 
-.controller('NsdNsnController', ['$scope', '$stateParams', 'math',
-  function($scope, $stateParams, math) {
+.controller('NsdNsnController', ['$scope', 'math',
+  function($scope, math) {
     $scope.numbers = [];
 
     var calculate = function calculate() {
@@ -85,7 +85,7 @@ angular.module('dim-calc.controllers', [])
         $scope.numbers.push(number);
       }
       calculate();
-    }
+    };
 
     $scope.remove = function(number) {
       var index = $scope.numbers.indexOf(number);
@@ -93,9 +93,18 @@ angular.module('dim-calc.controllers', [])
         $scope.numbers.splice(index, 1);
         calculate();
       }
-    }
+    };
 
     $scope.removeAll = function() {
       $scope.numbers = [];
-    }
+    };
+  }])
+
+.controller('EuklidController', ['$scope', 'math',
+  function($scope, math) {
+    $scope.calculate = function(a, b) {
+      if (!a || !b || isNaN(a) || isNaN(b)) return;
+
+      $scope.euklid = math.euklid(a, b);
+    };
   }]);

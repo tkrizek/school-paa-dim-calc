@@ -10,3 +10,32 @@ span.decomposed+span.decomposed:before
   content: ' \00D7 ';
 }
 
+input, .item-input, span.divider
+{
+	font-size:200%;
+}
+
+span.divider
+{
+	font-weight: bold;
+}
+
+.table-numbers td
+{
+	text-align: right;
+}
+
+.table-numbers td.a:after
+{
+  content:"\a0 =\a0 ";
+}
+
+.table-numbers td.b:after
+{
+  content:"\a0 *\a0 ";
+}
+
+.table-numbers td.q:after
+{
+  content:"\a0 +\a0 ";
+}

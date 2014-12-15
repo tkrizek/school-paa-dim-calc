@@ -52,6 +52,16 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       }
     })
 
+    .state('app.euklid', {
+      url: "/euklid",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/euklid.html",
+          controller: 'EuklidController'
+        }
+      }
+    })
+
     .state('app.playlists', {
       url: "/playlists",
       views: {

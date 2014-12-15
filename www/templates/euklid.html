@@ -1,0 +1,38 @@
+<ion-view title="Euklidův algoritmus">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header" ng-controller="EuklidController">
+
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item item-input">
+          <input type="tel" ng-model="a" placeholder="a" ng-enter="calculate(a, b)">
+        </label>
+        <label class="item item-input">
+          <input type="tel" ng-model="b" placeholder="b" ng-enter="calculate(a, b)">
+        </label>
+        <button class="button icon-left ion-calculator button-positive" ng-click="calculate(a, b)">
+          Vypočítej
+        </button>
+      </div>
+
+      <table class="table-numbers" ng-if="euklid">
+        <tr>
+          <th>a</th>
+          <th>b</th>
+          <th>q</th>
+          <th>r</th>
+        </tr>
+        <tr ng-repeat="step in euklid">
+          <td class="a">{{step.a}}</td>
+          <td class="b">{{step.b}}</td>
+          <td class="q">{{step.q}}</td>
+          <td class="r">{{step.r}}</td>
+        </tr>
+      </table>
+
+    </div>
+    
+  </ion-content>
+</ion-view>
