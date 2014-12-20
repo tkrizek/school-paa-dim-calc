@@ -5,40 +5,35 @@
   <ion-content class="has-header" ng-controller="NsdNsnController">
 
   <div class="card">
-    <label class="item item-input">
-      <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="add(number)">
-    </label>
     <div class="row item">
+      <div class="col">
+        <label class="item item-input">
+          <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="add(number)">
+        </label>
+      </div>
       <div class="col">
         <button class="button button-block button-positive icon-left ion-calculator" ng-click="add(number)">
           Přidej
         </button>
       </div>
-      <div class="col">
-        <button class="button button-block button-assertive icon-left ion-trash-a" ng-click="removeAll()">
-          Smazat
-        </button>
-      </div>
     </div>
   </div>
-      
 
-      
-      
-      
+  <div class="card" ng-if="numbers.length > 0">
+    <h2 class="item">NSD: {{nsd}}</h2>
+    <h2 class="item">NSN: {{nsn}}</h2>
+  </div>
+  
+  <div class="card" ng-if="numbers.length > 0">
+    <div class="item item-text-wrap">
+      <button class="button button-block button-outline button-assertive icon-left ion-trash-a" ng-click="removeAll()">
+        Smazat vše
+      </button>
+      <button class="button button-margin button-outline button-dark icon-right ion-close" ng-click="remove(number)" ng-repeat="number in numbers">
+        {{number}} 
+      </button>
+    </div>
+  </div>
 
-      <div class="card" ng-if="numbers.length > 0">
-        <div class="item">
-          <button class="button button-block button-stable icon-right ion-close" ng-click="remove(number)" ng-repeat="number in numbers">
-            {{number}} 
-          </button>
-        </div>
-      </div>
-
-      <div class="card" ng-if="numbers.length > 0">
-        <h2 class="item">NSD: {{nsd}}</h2>
-        <h2 class="item">NSN: {{nsn}}</h2>
-      </div>
-    
   </ion-content>
 </ion-view>
