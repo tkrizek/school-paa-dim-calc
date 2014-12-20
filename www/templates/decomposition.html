@@ -4,22 +4,26 @@
   </ion-nav-buttons>
   <ion-content class="has-header" ng-controller="PrimeCtrl">
 
-    <div class="list">
-      <div class="item item-input-inset">
-        <label class="item item-input">
-          <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="decompose(number)">
-        </label>
-        <button class="button icon-left ion-calculator button-positive" ng-click="decompose(number)">
-          Vypočítej
-        </button>
-      </div>
+    <div class="row">
+      <div class="col">
+          <label class="item item-input">
+            <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="decompose(number)">
+          </label>
+        </div>
+        <div class="col">
+          <button class="button button-block icon-left ion-calculator button-positive" ng-click="decompose(number)">
+            Vypočítej
+          </button>
+        </div>
     </div>
 
-    <div ng-if="decomposed">
-      {{calculated}} =
-      <span class="decomposed" ng-repeat="prime in primes">
-        {{prime}}<sup>{{multiples[prime]}}</sup>
-      </span>
+    <div class="row" ng-if="decomposed">
+      <h4 class="col">
+        {{calculated}} =
+        <span class="decomposed" ng-repeat="prime in primes">
+          {{prime}}<sup>{{multiples[prime]}}</sup>
+        </span>
+      </h4>
     </div>
     
   </ion-content>
