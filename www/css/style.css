@@ -3,7 +3,7 @@
 /*body, .ionic-body {
 	font-size: 24px;
 	line-height: 32px;
-}*/
+  }*/
 
 span.decomposed+span.decomposed:before
 {
@@ -12,17 +12,17 @@ span.decomposed+span.decomposed:before
 
 input, .item-input, span.divider
 {
-	font-size:200%;
+  font-size:200%;
 }
 
 span.divider
 {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .table-numbers td
 {
-	text-align: right;
+  text-align: right;
 }
 
 .table-numbers td.a:after
@@ -38,4 +38,15 @@ span.divider
 .table-numbers td.q:after
 {
   content:"\a0 +\a0 ";
+}
+
+.row .col .button-block
+{
+	margin:0px;
+}
+
+.button-float
+{
+  float:left;
+  margin:5px;
 }

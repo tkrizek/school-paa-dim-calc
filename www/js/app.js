@@ -178,6 +178,7 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       return nsd;
     }
 
+    // TODO negative numbers
     my.nsn = function(numbers) {
       var primes = {};  // all primes of the numbers (in highest multiple)
       var decomposed;

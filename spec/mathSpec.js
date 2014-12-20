@@ -65,5 +65,7 @@ describe('math service', function() {
       {a: 108, b: 84, q: 1, r: 24},
       {a: 84, b: 24, q: 3, r: 12},
       {a: 24, b: 12, q: 2, r: 0}]);
-  })
+  });
+
+  
 });
