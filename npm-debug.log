@@ -1,10 +1,10 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'gulp-jasmin' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'gulp-sass' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.33
 4 verbose node symlink /usr/bin/node
-5 verbose cache add [ 'gulp-jasmin', null ]
-6 verbose cache add name=undefined spec="gulp-jasmin" args=["gulp-jasmin",null]
+5 verbose cache add [ 'gulp-sass', null ]
+6 verbose cache add name=undefined spec="gulp-sass" args=["gulp-sass",null]
 7 verbose parsed url { protocol: null,
 7 verbose parsed url   slashes: null,
 7 verbose parsed url   auth: null,
@@ -14,70 +14,146 @@
 7 verbose parsed url   hash: null,
 7 verbose parsed url   search: null,
 7 verbose parsed url   query: null,
-7 verbose parsed url   pathname: 'gulp-jasmin',
-7 verbose parsed url   path: 'gulp-jasmin',
-7 verbose parsed url   href: 'gulp-jasmin' }
-8 silly lockFile 1b6e807c-gulp-jasmin gulp-jasmin
-9 verbose lock gulp-jasmin /home/sharp/.npm/1b6e807c-gulp-jasmin.lock
-10 silly lockFile 1b6e807c-gulp-jasmin gulp-jasmin
-11 silly lockFile 1b6e807c-gulp-jasmin gulp-jasmin
-12 verbose addNamed [ 'gulp-jasmin', '' ]
+7 verbose parsed url   pathname: 'gulp-sass',
+7 verbose parsed url   path: 'gulp-sass',
+7 verbose parsed url   href: 'gulp-sass' }
+8 silly lockFile 993318e6-gulp-sass gulp-sass
+9 verbose lock gulp-sass /home/sharp/.npm/993318e6-gulp-sass.lock
+10 silly lockFile 993318e6-gulp-sass gulp-sass
+11 silly lockFile 993318e6-gulp-sass gulp-sass
+12 verbose addNamed [ 'gulp-sass', '' ]
 13 verbose addNamed [ null, '*' ]
-14 silly lockFile 5ffcdb29-gulp-jasmin gulp-jasmin@
-15 verbose lock gulp-jasmin@ /home/sharp/.npm/5ffcdb29-gulp-jasmin.lock
-16 silly addNameRange { name: 'gulp-jasmin', range: '*', hasData: false }
-17 verbose request where is /gulp-jasmin
+14 silly lockFile 59b5e58d-gulp-sass gulp-sass@
+15 verbose lock gulp-sass@ /home/sharp/.npm/59b5e58d-gulp-sass.lock
+16 silly addNameRange { name: 'gulp-sass', range: '*', hasData: false }
+17 verbose request where is /gulp-sass
 18 verbose request registry https://registry.npmjs.org/
-19 verbose request id 26ee6c6feb7988ae
-20 verbose url raw /gulp-jasmin
-21 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-jasmin' ]
-22 verbose url resolved https://registry.npmjs.org/gulp-jasmin
-23 verbose request where is https://registry.npmjs.org/gulp-jasmin
-24 info trying registry request attempt 1 at 18:59:57
-25 http GET https://registry.npmjs.org/gulp-jasmin
-26 http 404 https://registry.npmjs.org/gulp-jasmin
-27 verbose headers { date: 'Mon, 01 Dec 2014 17:59:57 GMT',
-27 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-27 verbose headers   'content-type': 'application/json',
-27 verbose headers   'cache-control': 'max-age=0',
-27 verbose headers   'content-length': '52',
-27 verbose headers   'accept-ranges': 'bytes',
-27 verbose headers   via: '1.1 varnish',
-27 verbose headers   age: '0',
-27 verbose headers   'x-served-by': 'cache-fra1223-FRA',
-27 verbose headers   'x-cache': 'MISS',
-27 verbose headers   'x-cache-hits': '0',
-27 verbose headers   'x-timer': 'S1417456797.794297,VS0,VE179',
-27 verbose headers   'keep-alive': 'timeout=10, max=50',
-27 verbose headers   connection: 'Keep-Alive' }
-28 silly registry.get cb [ 404,
-28 silly registry.get   { date: 'Mon, 01 Dec 2014 17:59:57 GMT',
-28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-28 silly registry.get     'content-type': 'application/json',
-28 silly registry.get     'cache-control': 'max-age=0',
-28 silly registry.get     'content-length': '52',
-28 silly registry.get     'accept-ranges': 'bytes',
+19 verbose request id 2dc7a51b2554d2ca
+20 verbose url raw /gulp-sass
+21 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-sass' ]
+22 verbose url resolved https://registry.npmjs.org/gulp-sass
+23 verbose request where is https://registry.npmjs.org/gulp-sass
+24 info trying registry request attempt 1 at 23:43:15
+25 verbose etag "7IVTJY9EPDBDGFYJ88U11471P"
+26 http GET https://registry.npmjs.org/gulp-sass
+27 http 304 https://registry.npmjs.org/gulp-sass
+28 silly registry.get cb [ 304,
+28 silly registry.get   { date: 'Sat, 20 Dec 2014 22:43:16 GMT',
+28 silly registry.get     server: 'Apache',
 28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     'last-modified': 'Sat, 20 Dec 2014 22:43:16 GMT',
+28 silly registry.get     'cache-control': 'max-age=60',
+28 silly registry.get     etag: '"7IVTJY9EPDBDGFYJ88U11471P"',
 28 silly registry.get     age: '0',
-28 silly registry.get     'x-served-by': 'cache-fra1223-FRA',
+28 silly registry.get     'x-served-by': 'cache-fra1243-FRA',
 28 silly registry.get     'x-cache': 'MISS',
 28 silly registry.get     'x-cache-hits': '0',
-28 silly registry.get     'x-timer': 'S1417456797.794297,VS0,VE179',
+28 silly registry.get     'x-timer': 'S1419115396.199009,VS0,VE414',
+28 silly registry.get     vary: 'Accept',
+28 silly registry.get     'content-length': '0',
 28 silly registry.get     'keep-alive': 'timeout=10, max=50',
 28 silly registry.get     connection: 'Keep-Alive' } ]
-29 silly lockFile 5ffcdb29-gulp-jasmin gulp-jasmin@
-30 silly lockFile 5ffcdb29-gulp-jasmin gulp-jasmin@
-31 error 404 404 Not Found: gulp-jasmin
-31 error 404
-31 error 404 'gulp-jasmin' is not in the npm registry.
-31 error 404 You should bug the author to publish it
-31 error 404
-31 error 404 Note that you can also install from a
-31 error 404 tarball, folder, or http url, or git url.
-32 error System Linux 3.13.0-24-generic
-33 error command "/usr/bin/node" "/usr/bin/npm" "install" "-g" "gulp-jasmin"
-34 error cwd /home/sharp/Dropbox/School/Programovani_mobilnich_aplikaci_PAA/dimCalc
-35 error node -v v0.10.33
-36 error npm -v 1.4.28
-37 error code E404
-38 verbose exit [ 1, true ]
+29 verbose etag https://registry.npmjs.org/gulp-sass from cache
+30 silly addNameRange number 2 { name: 'gulp-sass', range: '*', hasData: true }
+31 silly addNameRange versions [ 'gulp-sass',
+31 silly addNameRange   [ '0.1.0',
+31 silly addNameRange     '0.2.1',
+31 silly addNameRange     '0.2.2',
+31 silly addNameRange     '0.2.3',
+31 silly addNameRange     '0.3.0',
+31 silly addNameRange     '0.4.0',
+31 silly addNameRange     '0.4.1',
+31 silly addNameRange     '0.5.0',
+31 silly addNameRange     '0.5.1',
+31 silly addNameRange     '0.5.2',
+31 silly addNameRange     '0.6.0',
+31 silly addNameRange     '0.7.0',
+31 silly addNameRange     '0.7.1',
+31 silly addNameRange     '0.7.2',
+31 silly addNameRange     '0.7.3',
+31 silly addNameRange     '1.0.0',
+31 silly addNameRange     '1.1.0',
+31 silly addNameRange     '1.2.0',
+31 silly addNameRange     '1.2.1',
+31 silly addNameRange     '1.2.2',
+31 silly addNameRange     '1.2.3',
+31 silly addNameRange     '1.2.4' ] ]
+32 verbose addNamed [ 'gulp-sass', '1.2.4' ]
+33 verbose addNamed [ '1.2.4', '1.2.4' ]
+34 silly lockFile 61c2c22e-gulp-sass-1-2-4 gulp-sass@1.2.4
+35 verbose lock gulp-sass@1.2.4 /home/sharp/.npm/61c2c22e-gulp-sass-1-2-4.lock
+36 silly lockFile 61c2c22e-gulp-sass-1-2-4 gulp-sass@1.2.4
+37 silly lockFile 61c2c22e-gulp-sass-1-2-4 gulp-sass@1.2.4
+38 silly lockFile 59b5e58d-gulp-sass gulp-sass@
+39 silly lockFile 59b5e58d-gulp-sass gulp-sass@
+40 silly resolved [ { name: 'gulp-sass',
+40 silly resolved     version: '1.2.4',
+40 silly resolved     description: 'Gulp plugin for sass',
+40 silly resolved     main: 'index.js',
+40 silly resolved     scripts: { test: 'node test/test.js' },
+40 silly resolved     repository: { type: 'git', url: 'git://github.com/dlmanning/gulp-sass' },
+40 silly resolved     keywords: [ 'gulpplugin', 'sass', 'gulp' ],
+40 silly resolved     author: { name: 'David Manning' },
+40 silly resolved     license: 'MIT',
+40 silly resolved     bugs: { url: 'https://github.com/dlmanning/gulp-sass/issues' },
+40 silly resolved     dependencies:
+40 silly resolved      { 'node-sass': '^1.0',
+40 silly resolved        'gulp-util': '^3.0',
+40 silly resolved        'map-stream': '~0.1',
+40 silly resolved        'vinyl-sourcemaps-apply': '~0.1.1',
+40 silly resolved        clone: '~0.1.18' },
+40 silly resolved     devDependencies: { tape: '~2.3', 'concat-stream': '~1.4' },
+40 silly resolved     jshintConfig: { laxcomma: true },
+40 silly resolved     gitHead: '0c429d5d909bd63e6d146d523e6f5978e9b7acb6',
+40 silly resolved     homepage: 'https://github.com/dlmanning/gulp-sass',
+40 silly resolved     _id: 'gulp-sass@1.2.4',
+40 silly resolved     _shasum: 'f9de5dff16f9c3369f45bdabf466a588db819c68',
+40 silly resolved     _from: 'gulp-sass@',
+40 silly resolved     _npmVersion: '2.1.10',
+40 silly resolved     _nodeVersion: '0.10.33',
+40 silly resolved     _npmUser: { name: 'dlmanning', email: 'dlmanning@me.com' },
+40 silly resolved     maintainers: [ [Object] ],
+40 silly resolved     dist:
+40 silly resolved      { shasum: 'f9de5dff16f9c3369f45bdabf466a588db819c68',
+40 silly resolved        tarball: 'http://registry.npmjs.org/gulp-sass/-/gulp-sass-1.2.4.tgz' },
+40 silly resolved     directories: {},
+40 silly resolved     _resolved: 'https://registry.npmjs.org/gulp-sass/-/gulp-sass-1.2.4.tgz',
+40 silly resolved     readme: 'ERROR: No README data found!' } ]
+41 info install gulp-sass@1.2.4 into /usr/lib
+42 info installOne gulp-sass@1.2.4
+43 verbose lib/node_modules/gulp-sass unbuild
+44 verbose tar unpack /home/sharp/.npm/gulp-sass/1.2.4/package.tgz
+45 silly lockFile b1c5f0d5-r-usr-lib-node-modules-gulp-sass tar:///usr/lib/node_modules/gulp-sass
+46 verbose lock tar:///usr/lib/node_modules/gulp-sass /home/sharp/.npm/b1c5f0d5-r-usr-lib-node-modules-gulp-sass.lock
+47 silly lockFile d1ed76f7--npm-gulp-sass-1-2-4-package-tgz tar:///home/sharp/.npm/gulp-sass/1.2.4/package.tgz
+48 verbose lock tar:///home/sharp/.npm/gulp-sass/1.2.4/package.tgz /home/sharp/.npm/d1ed76f7--npm-gulp-sass-1-2-4-package-tgz.lock
+49 silly gunzTarPerm modes [ '755', '644' ]
+50 error Error: EACCES, mkdir '/usr/lib/node_modules/gulp-sass'
+50 error  { [Error: EACCES, mkdir '/usr/lib/node_modules/gulp-sass']
+50 error   errno: 3,
+50 error   code: 'EACCES',
+50 error   path: '/usr/lib/node_modules/gulp-sass',
+50 error   fstream_type: 'Directory',
+50 error   fstream_path: '/usr/lib/node_modules/gulp-sass',
+50 error   fstream_class: 'DirWriter',
+50 error   fstream_stack:
+50 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+50 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+50 error      'Object.oncomplete (fs.js:107:15)' ] }
+51 error Please try running this command again as root/Administrator.
+52 error System Linux 3.13.0-24-generic
+53 error command "/usr/bin/node" "/usr/bin/npm" "install" "-g" "gulp-sass"
+54 error cwd /home/sharp/Dropbox/School/Programovani_mobilnich_aplikaci_PAA/dim-calc
+55 error node -v v0.10.33
+56 error npm -v 1.4.28
+57 error path /usr/lib/node_modules/gulp-sass
+58 error fstream_path /usr/lib/node_modules/gulp-sass
+59 error fstream_type Directory
+60 error fstream_class DirWriter
+61 error code EACCES
+62 error errno 3
+63 error stack Error: EACCES, mkdir '/usr/lib/node_modules/gulp-sass'
+64 error fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+64 error fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+64 error fstream_stack Object.oncomplete (fs.js:107:15)
+65 verbose exit [ 3, true ]
