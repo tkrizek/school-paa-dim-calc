@@ -4,40 +4,40 @@
   </ion-nav-buttons>
   <ion-content class="has-header" ng-controller="NsdNsnController">
 
-  <div class="row">
-    <div class="col">
-        <label class="item item-input">
-          <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="add(number)">
-        </label>
-      </div>
+    <div class="row">
       <div class="col">
-        <button class="button button-block button-positive icon-left ion-calculator" ng-click="add(number)">
-          Přidej
+          <label class="item item-input">
+            <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="add(number)">
+          </label>
+        </div>
+        <div class="col">
+          <button class="button button-block button-positive icon-left ion-calculator" ng-click="add(number)">
+            Přidej
+          </button>
+        </div>
+    </div>
+
+    <div class="row" ng-if="numbers.length > 0">
+      <h4 class="col">NSD: {{nsd}}</h4>
+    </div>
+    <div class="row" ng-if="numbers.length > 0">
+      <h4 class="col">NSN: {{nsn}}</h4>
+    </div>
+    
+    <div class="row" ng-if="numbers.length > 0">
+      <div class="col">
+        <button class="button button-block button-outline button-assertive icon-left ion-trash-a" ng-click="removeAll()">
+          Smazat vše
         </button>
       </div>
-  </div>
-
-  <div class="row" ng-if="numbers.length > 0">
-    <h4 class="col">NSD: {{nsd}}</h4>
-  </div>
-  <div class="row" ng-if="numbers.length > 0">
-    <h4 class="col">NSN: {{nsn}}</h4>
-  </div>
-  
-  <div class="row" ng-if="numbers.length > 0">
-    <div class="col">
-      <button class="button button-block button-outline button-assertive icon-left ion-trash-a" ng-click="removeAll()">
-        Smazat vše
-      </button>
     </div>
-  </div>
-  <div class="row" ng-if="numbers.length > 0">
-    <div class="col">
-      <button class="button button-margin button-outline button-dark icon-right ion-close" ng-click="remove(number)" ng-repeat="number in numbers">
-        {{number}} 
-      </button>
+    <div class="row" ng-if="numbers.length > 0">
+      <div class="col">
+        <button class="button button-margin button-outline button-dark icon-right ion-close" ng-click="remove(number)" ng-repeat="number in numbers">
+          {{number}} 
+        </button>
+      </div>
     </div>
-  </div>
 
   </ion-content>
 </ion-view>
