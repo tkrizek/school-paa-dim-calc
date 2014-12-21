@@ -21,7 +21,6 @@ angular.module('dim-calc.controllers', [])
     }
   }])
 
-  // TODO negative numbers; leading zeros
 .controller('NsdNsnController', ['$scope', 'math',
   function($scope, math) {
     $scope.numbers = [];
