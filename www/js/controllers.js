@@ -2,24 +2,21 @@
 
 angular.module('dim-calc.controllers', [])
 
-.controller('PrimeCtrl', ['$scope', '$stateParams', 'math',
-  function($scope, $stateParams, math) {
-    $scope.number = $stateParams.number || null;
-
+.controller('PrimeCtrl', ['$scope', 'math',
+  function($scope, math) {
     $scope.isPrime = function(number) {
       return math.isPrime(number);
     }
 
     $scope.decompose = function(number) {
+      var number = math.number(number);
       $scope.number = "";
-      if (!number || isNaN(number)) {
-        $scope.decomposed = false;
+      if (number === null) {
         return;
       }
       var primes = math.decompose(number);
       $scope.primes = Object.keys(primes);
       $scope.multiples = primes;
-      $scope.decomposed = true;
       $scope.calculated = number;
     }
   }])
@@ -94,7 +91,7 @@ angular.module('dim-calc.controllers', [])
     };
 
     $scope.calculate = function() {
-      if (!$scope.values.numerator || isNaN($scope.values.numerator)) return;
+      if (isNaN($scope.values.numerator)) return;
       if (!$scope.values.divisor || isNaN($scope.values.divisor)) return;
 
       fractions = math.approximateFractions($scope.values.numerator, $scope.values.divisor);
@@ -105,5 +102,7 @@ angular.module('dim-calc.controllers', [])
 
 .controller('CongruencyController', ['$scope', 'math',
   function($scope, math) {
-    
+    $scope.calculate = function() {
+
+    };
   }]);
