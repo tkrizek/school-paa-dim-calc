@@ -69,6 +69,16 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
           controller: 'ApproximateFractionsController'
         }
       }
+    })
+
+    .state('app.congruency', {
+      url: "/congruency",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/congruency.html",
+          controller: 'CongruencyController'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback

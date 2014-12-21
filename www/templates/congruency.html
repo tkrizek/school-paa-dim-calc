@@ -1,0 +1,54 @@
+<ion-view title="ax ≅ b (mod m)">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header" ng-controller="CongruencyController" scroll="false">
+
+    <div class="row">
+      <div class="col">
+          <label class="item item-input">
+            <span class="input-label">a</span>
+            <input type="tel" ng-model="values.a" ng-enter="calculate()">
+          </label>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">b</span>
+          <input type="tel" ng-model="values.b" ng-enter="calculate()">
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">m</span>
+          <input type="tel" ng-model="values.m" ng-enter="calculate()">
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="button button-block icon-left ion-calculator button-positive" ng-click="calculate()">
+          Vypočítej
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-block icon-left ion-trash button-assertive" ng-click="clear()">
+          Smazat
+        </button>
+      </div>
+    </div>
+
+    <div class="row" ng-if="">
+      <div class="col">
+
+      </div>
+    </div>
+    
+  </ion-content>
+</ion-view>

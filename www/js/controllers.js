@@ -101,4 +101,9 @@ angular.module('dim-calc.controllers', [])
       $scope.values.maxStep = fractions.length - 1;
       $scope.changeStep($scope.values.step || $scope.values.maxStep);
     };
+  }])
+
+.controller('CongruencyController', ['$scope', 'math',
+  function($scope, math) {
+    
   }]);
