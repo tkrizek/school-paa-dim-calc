@@ -1,18 +1,6 @@
-/* Empty. Add your own CSS if you like */
-
-/*body, .ionic-body {
-	font-size: 24px;
-	line-height: 32px;
-  }*/
-
 span.decomposed+span.decomposed:before
 {
   content: ' \00D7 ';
-}
-
-input, .item-input, span.divider
-{
-  font-size:200%;
 }
 
 span.divider

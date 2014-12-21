@@ -24,6 +24,7 @@ angular.module('dim-calc.controllers', [])
     }
   }])
 
+  // TODO negative numbers; leading zeros
 .controller('NsdNsnController', ['$scope', 'math',
   function($scope, math) {
     $scope.numbers = [];
@@ -66,6 +67,35 @@ angular.module('dim-calc.controllers', [])
 
 .controller('ApproximateFractionsController', ['$scope', 'math',
   function($scope, math) {
+    $scope.values = {
+      step: 1,
+      maxStep: 6,
+      P: 3,
+      Q: 0,
+      q: 4
+    };
+
+    var fractions = [
+        {P: 1, Q: 0, q: 1},
+        {P: 2, Q: 5, q: 2},
+        {P: 3, Q: 0, q: 4}];
+
+    $scope.changeStep = function(newValue) {
+      if (!newValue || isNaN(newValue)) return;
+
+      $scope.values.step = Number(newValue);
+      if ($scope.values.step < -1) {
+        $scope.values.step = -1;
+      }
+      else if ($scope.values.step > $scope.values.maxStep) {
+        $scope.values.step = $scope.values.maxStep;
+      }
+
+      $scope.values.P = fractions[$scope.values.step + 1].P;
+      $scope.values.Q = fractions[$scope.values.step + 1].Q;
+      $scope.values.q = fractions[$scope.values.step + 1].q;
+    };
+
     $scope.calculate = function(numerator, divisor) {
 
     };

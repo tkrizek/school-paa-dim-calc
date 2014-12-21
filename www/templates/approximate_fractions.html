@@ -7,21 +7,52 @@
     <div class="row">
       <div class="col">
           <label class="item item-input">
-            <input type="tel" ng-model="numerator" placeholder="čitatel" ng-enter="calculate(numerator, divisor)">
+            <input type="tel" ng-model="values.numerator" placeholder="čitatel" ng-enter="calculate()">
           </label>
         </div>
         <div class="col">
           <label class="item item-input">
-            <input type="tel" ng-model="divisor" placeholder="jmenovatel" ng-enter="calculate(numerator, divisor)">
+            <input type="tel" ng-model="values.divisor" placeholder="jmenovatel" ng-enter="calculate()">
           </label>
         </div>
     </div>
 
     <div class="row">
       <div class="col">
-        <button class="button button-block icon-left ion-calculator button-positive" ng-click="calculate(numerator, divisor)">
+        <button class="button button-block icon-left ion-calculator button-positive" ng-click="calculate()">
           Vypočítej
         </button>
+      </div>
+    </div>
+
+    <div class="row" ng-if="values.P">
+      <div class="col">
+        <div class="item range range-positive">
+          <a href="" class="button button-clear button-assertive icon ion-minus-round" ng-click="changeStep(values.step - 1)"></a>
+          <input type="range" ng-model="values.step" min="-1" max="{{values.maxStep}}" ng-change="changeStep(values.step)">
+          <a href="" class="button button-clear button-balanced icon ion-plus-round" ng-click="changeStep(values.step + 1)"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-if="values.P">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">i</span>
+          <span>{{values.step}}</span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">P<sub>{{values.step}}</sub></span>
+          <span>{{values.P}}</span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Q<sub>{{values.step}}</sub></span>
+          <span>{{values.Q}}</span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">q<sub>{{values.step}}</sub></span>
+          <span>{{values.q}}</span>
+        </label>
       </div>
     </div>
 
