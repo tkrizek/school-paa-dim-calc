@@ -22,8 +22,7 @@ angular.module('dim-calc.controllers', [])
       $scope.decomposed = true;
       $scope.calculated = number;
     }
-  }]
-)
+  }])
 
 .controller('NsdNsnController', ['$scope', 'math',
   function($scope, math) {
@@ -62,5 +61,12 @@ angular.module('dim-calc.controllers', [])
       if (!a || !b || isNaN(a) || isNaN(b)) return;
 
       $scope.euklid = math.euklid(a, b);
+    };
+  }])
+
+.controller('ApproximateFractionsController', ['$scope', 'math',
+  function($scope, math) {
+    $scope.calculate = function(numerator, divisor) {
+
     };
   }]);

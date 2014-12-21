@@ -59,6 +59,16 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
           controller: 'EuklidController'
         }
       }
+    })
+
+    .state('app.approximate_fractions', {
+      url: "/approximate_fractions",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/approximate_fractions.html",
+          controller: 'ApproximateFractionsController'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback

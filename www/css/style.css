@@ -35,21 +35,6 @@ span.divider
 {
   text-align: right;
 }
-/*
-.table-numbers td.a:after
-{
-  content:"\a0 =\a0 ";
-}
-
-.table-numbers td.b:after
-{
-  content:"\a0 \00D7\a0 ";
-}
-
-.table-numbers td.q:after
-{
-  content:"\a0 +\a0 ";
-}*/
 
 .row .col .button-block
 {
