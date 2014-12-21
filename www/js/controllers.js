@@ -57,8 +57,19 @@ angular.module('dim-calc.controllers', [])
 .controller('EuklidController', ['$scope', 'math',
   function($scope, math) {
     $scope.calculate = function(a, b) {
-      if (!a || !b || isNaN(a) || isNaN(b)) return;
+      a = math.number(a);
+      b = math.number(b);
 
+      if (a === null || a < 0) {
+        $scope.a = "";
+        return;
+      }
+
+      if (b === null || b <= 0) {
+        $scope.b = "";
+        return;
+      }
+      
       $scope.euklid = math.euklid(a, b);
     };
   }])
