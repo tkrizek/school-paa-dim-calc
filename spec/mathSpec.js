@@ -39,6 +39,7 @@ describe('math service', function() {
 
   it('calculates greatest common divisor for a list of numbers', function () {
     expect(math.nsd([65])).toBe(65);
+    expect(math.nsd([3, 6])).toBe(3);
     expect(math.nsd([123, 123])).toBe(123);
     expect(math.nsd([144, 540])).toBe(36);
     expect(math.nsd([144, -540])).toBe(36);
@@ -86,7 +87,7 @@ describe('math service', function() {
   });
 
   it('calculate congruency ax ≅ b (mod m) where gcd(a, m) = 1', function() {
-    expect(math.congruency(285, 313, 169)).toBe(77);
+    expect(math.congruency(285, 313, 169)).toEqual([77]);
   });
 
   it('converts string/number to integer', function() {

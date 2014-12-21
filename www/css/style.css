@@ -44,3 +44,12 @@ span.divider
   left: 0;
   right: 0;
 }
+
+span.solution {
+  font-weight: bold;
+}
+
+span.solution+span.solution:before
+{
+  content: ', ';
+}

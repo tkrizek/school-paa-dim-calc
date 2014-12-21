@@ -129,7 +129,8 @@ angular.module('dim-calc.controllers', [])
       };
 
       // proceed with calculation
-      fractions = math.approximateFractions($scope.values.numerator, $scope.values.divisor);
+      fractions = math.approximateFractions($scope.values.numerator,
+        $scope.values.divisor);
       $scope.values.maxStep = fractions.length - 1;
       $scope.changeStep($scope.values.step || $scope.values.maxStep);
     };
@@ -137,7 +138,50 @@ angular.module('dim-calc.controllers', [])
 
 .controller('CongruencyController', ['$scope', 'math',
   function($scope, math) {
-    $scope.calculate = function() {
 
+    $scope.calculated = {};
+
+    $scope.calculate = function() {
+      convertNumbers();
+      if (!validateNumbers()) return;
+
+      // set view variables
+      $scope.calculated.a = $scope.values.a;
+      $scope.calculated.b = $scope.values.b;
+      $scope.calculated.m = $scope.values.m;
+
+      // calculate solution
+      $scope.calculated.solution = math.congruency($scope.values.a,
+        $scope.values.b, $scope.values.m);
+    };
+
+    $scope.clear = function() {
+      $scope.values = {};
+      $scope.calculated = {};
+    };
+
+    var convertNumbers = function() {
+      $scope.values.a = math.number($scope.values.a);
+      $scope.values.b = math.number($scope.values.b);
+      $scope.values.m = math.number($scope.values.m);
+    };
+
+    var validateNumbers = function() {
+      var valid = true;
+
+      if ($scope.values.a === null || $scope.values.a <= 0) {
+        $scope.values.a = "";
+        valid = false;
+      }
+      if ($scope.values.b === null || $scope.values.b < 0) {
+        $scope.values.b = "";
+        valid = false;
+      }
+      if ($scope.values.m === null || $scope.values.m <= 0) {
+        $scope.values.m = "";
+        valid = false;
+      }
+
+      return valid;
     };
   }]);

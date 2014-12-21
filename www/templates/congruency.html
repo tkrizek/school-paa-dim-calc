@@ -44,9 +44,15 @@
       </div>
     </div>
 
-    <div class="row" ng-if="">
+    <div class="row" ng-if="calculated.a != undefined">
       <div class="col">
+        <h4>{{calculated.a}}x ≅ {{calculated.b}} (mod {{calculated.m}}) <span ng-if="calculated.solution === false">ne</span>má řešení</h4>
+      </div>
+    </div>
 
+    <div class="row" ng-if="calculated.solution != undefined && calculated.solution !== false">
+      <div class="col">
+        <h4>x ≅ <span class="solution" ng-repeat="x in calculated.solution">{{x}}</span> (mod {{calculated.m}})</h4>
       </div>
     </div>
     

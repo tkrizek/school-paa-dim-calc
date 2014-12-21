@@ -275,13 +275,16 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
     };
 
     my.congruency = function(a, b, m) {
-      if (a < 0 || b < 0) return;
+      if (a <= 0 || b < 0 || m <= 0) return;
       
-      if (this.nsd(a, m) == 1) {
+      if (this.nsd([a, m]) == 1) {
         var fractions = this.approximateFractions(m, a);
-        return (Math.pow(-1, fractions.length - 2) *
-          fractions[fractions.length - 2].P * b) % m;
+
+        return [(Math.pow(-1, fractions.length - 2) *
+          fractions[fractions.length - 2].P * b) % m];
       }
+
+      return false;
     };
 
     my.number = function(string) {
