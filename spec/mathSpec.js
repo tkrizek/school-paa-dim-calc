@@ -67,5 +67,15 @@ describe('math service', function() {
       {a: 24, b: 12, q: 2, r: 0}]);
   });
 
-  
+  it('calculates approximate fractions for a/b', function() {
+    expect(math.approximateFractions(216, 82)).toEqual([
+      {P: 1, Q: 0, q: null},
+      {P: 2, Q: 1, q: 2},
+      {P: 3, Q: 1, q: 1},
+      {P: 5, Q: 2, q: 1},
+      {P: 8, Q: 3, q: 1},
+      {P: 21, Q: 8, q: 2},
+      {P: 29, Q: 11, q: 1},
+      {P: 108, Q: 41, q: 3}]);
+  });
 });

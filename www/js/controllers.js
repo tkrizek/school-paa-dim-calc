@@ -97,6 +97,6 @@ angular.module('dim-calc.controllers', [])
     };
 
     $scope.calculate = function(numerator, divisor) {
-
+      
     };
   }]);

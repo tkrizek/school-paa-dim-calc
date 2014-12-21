@@ -156,7 +156,7 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       }
 
       return decomposition;
-    }
+    };
 
     my.nsd = function(numbers) {
       var decomposed_numbers = [];
@@ -186,7 +186,7 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       });
 
       return nsd;
-    }
+    };
 
     // TODO negative numbers
     my.nsn = function(numbers) {
@@ -211,7 +211,7 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       });
 
       return nsn;
-    }
+    };
 
     my.euklid = function(a, b) {
       var params = [];
@@ -232,7 +232,23 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       } while(step.r != 0);
 
       return params;
-    }
+    };
+
+    my.approximateFractions = function(a, b) {
+      var euklid = this.euklid(a, b);
+      var fractions = [];
+      fractions.push({P: 1, Q: 0, q: null});
+      fractions.push({P: euklid[0].q, Q: 1, q: euklid[0].q});
+
+      for (var i = 1; i < euklid.length; i++) {
+        fractions.push({
+          P: euklid[i].q * fractions[i].P + fractions[i - 1].P,
+          Q: euklid[i].q * fractions[i].Q + fractions[i - 1].Q, 
+          q: euklid[i].q});
+      }
+
+      return fractions;
+    };
 
     return my;
   }(math || {}));
