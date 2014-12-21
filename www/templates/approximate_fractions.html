@@ -2,7 +2,7 @@
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
-  <ion-content class="has-header" ng-controller="EuklidController" scroll="false">
+  <ion-content class="has-header" ng-controller="ApproximateFractionsController" scroll="false">
 
     <div class="row">
       <div class="col">
@@ -25,32 +25,32 @@
       </div>
     </div>
 
-    <div class="row" ng-if="values.P">
+    <div class="row" ng-if="values.maxStep != undefined">
       <div class="col">
         <div class="item range range-positive">
           <a href="" class="button button-clear button-assertive icon ion-minus-round" ng-click="changeStep(values.step - 1)"></a>
-          <input type="range" ng-model="values.step" min="-1" max="{{values.maxStep}}" ng-change="changeStep(values.step)">
+          <input type="range" min="0" max="{{values.maxStep}}" ng-model="values.step" ng-change="changeStep(values.step)" value="{{values.step}}">
           <a href="" class="button button-clear button-balanced icon ion-plus-round" ng-click="changeStep(values.step + 1)"></a>
         </div>
       </div>
     </div>
 
-    <div class="row" ng-if="values.P">
+    <div class="row" ng-if="values.maxStep != undefined">
       <div class="col">
         <label class="item item-input">
           <span class="input-label">i</span>
-          <span>{{values.step}}</span>
+          <span>{{values.step - 1}}</span>
         </label>
         <label class="item item-input">
-          <span class="input-label"><strong>P<sub>{{values.step}}</sub></strong></span>
+          <span class="input-label"><strong>P<sub>{{values.step -1}}</sub></strong></span>
           <span><strong>{{values.P}}</strong></span>
         </label>
         <label class="item item-input">
-          <span class="input-label"><strong>Q<sub>{{values.step}}</sub></strong></span>
+          <span class="input-label"><strong>Q<sub>{{values.step -1}}</sub></strong></span>
           <span><strong>{{values.Q}}</strong></span>
         </label>
         <label class="item item-input">
-          <span class="input-label">q<sub>{{values.step}}</sub></span>
+          <span class="input-label">q<sub>{{values.step -1}}</sub></span>
           <span>{{values.q}}</span>
         </label>
       </div>

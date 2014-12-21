@@ -68,35 +68,37 @@ angular.module('dim-calc.controllers', [])
 .controller('ApproximateFractionsController', ['$scope', 'math',
   function($scope, math) {
     $scope.values = {
-      step: 1,
-      maxStep: 6,
-      P: 3,
-      Q: 0,
-      q: 4
+      step: null,
+      maxStep: null,
+      P: null,
+      Q: null,
+      q: null
     };
 
-    var fractions = [
-        {P: 1, Q: 0, q: 1},
-        {P: 2, Q: 5, q: 2},
-        {P: 3, Q: 0, q: 4}];
+    var fractions = [];
 
     $scope.changeStep = function(newValue) {
-      if (!newValue || isNaN(newValue)) return;
-
+      if (isNaN(newValue)) return;
       $scope.values.step = Number(newValue);
-      if ($scope.values.step < -1) {
-        $scope.values.step = -1;
+
+      if ($scope.values.step < 0) {
+        $scope.values.step = 0;
       }
       else if ($scope.values.step > $scope.values.maxStep) {
         $scope.values.step = $scope.values.maxStep;
       }
 
-      $scope.values.P = fractions[$scope.values.step + 1].P;
-      $scope.values.Q = fractions[$scope.values.step + 1].Q;
-      $scope.values.q = fractions[$scope.values.step + 1].q;
+      $scope.values.P = fractions[$scope.values.step].P;
+      $scope.values.Q = fractions[$scope.values.step].Q;
+      $scope.values.q = fractions[$scope.values.step].q;
     };
 
-    $scope.calculate = function(numerator, divisor) {
-      
+    $scope.calculate = function() {
+      if (!$scope.values.numerator || isNaN($scope.values.numerator)) return;
+      if (!$scope.values.divisor || isNaN($scope.values.divisor)) return;
+
+      fractions = math.approximateFractions($scope.values.numerator, $scope.values.divisor);
+      $scope.values.maxStep = fractions.length - 1;
+      $scope.changeStep($scope.values.step || $scope.values.maxStep);
     };
   }]);
