@@ -107,6 +107,8 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
 
     // generate primes so target is equal or less than last prime
     my.generatePrimes = function(target) {
+      if (target < 0) target *= -1;
+
       var n = primes[primes.length - 1];
       
       // test if n is prime by looking for a prime divisor
@@ -129,6 +131,8 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
     };
 
     my.isPrime = function(number) {
+      if (number < 0) number *= -1;
+
       // generate more primes if the last cached prime is not higher than current number
       if (number > primes[primes.length - 1]) {
         this.generatePrimes(number);
@@ -147,6 +151,12 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
 
     my.decompose = function(number) {
       var decomposition = {};
+      if (number < 0) {
+        number *= -1;
+        decomposition['-1'] = 1;
+      }
+
+      // generate primes up to sqrt(number)
       var sqrt = Math.sqrt(number);
       if (sqrt > primes[primes.length - 1]) {
         this.generatePrimes(sqrt);
@@ -205,6 +215,7 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       var nsn = 1;
 
       for (var i = 0; i < numbers.length; i++) {
+        if (numbers[i] < 0) numbers[i] *= -1;
         decomposed = this.decompose(numbers[i]);
 
         // set highest multiple of prime number
@@ -224,9 +235,10 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
     };
 
     my.euklid = function(a, b) {
+      if (a < 0 || b < 0) return;
+
       var params = [];
       var step = {};
-
       step.a = a;
       step.b = b;
 
@@ -245,6 +257,8 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
     };
 
     my.approximateFractions = function(a, b) {
+      if (a < 0 || b < 0) return;
+
       var euklid = this.euklid(a, b);
       var fractions = [];
       fractions.push({P: 1, Q: 0, q: null});
@@ -261,6 +275,8 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
     };
 
     my.congruency = function(a, b, m) {
+      if (a < 0 || b < 0) return;
+      
       if (this.nsd(a, m) == 1) {
         var fractions = this.approximateFractions(m, a);
         return (Math.pow(-1, fractions.length - 2) *
