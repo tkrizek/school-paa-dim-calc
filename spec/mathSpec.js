@@ -82,4 +82,17 @@ describe('math service', function() {
   it('calculate congruency ax ≅ b (mod m) where gcd(a, m) = 1', function() {
     expect(math.congruency(285, 313, 169)).toBe(77);
   });
+
+  it('converts string/number to integer', function() {
+    expect(math.number('00003')).toBe(3);
+    expect(math.number('z3')).toBe(null);
+    expect(math.number('')).toBe(null);
+    expect(math.number('0')).toBe(0);
+    expect(math.number(0)).toBe(0);
+    expect(math.number('-14')).toBe(-14);
+    expect(math.number(-3)).toBe(-3);
+    expect(math.number('3.14')).toBe(3);
+    expect(math.number(3.54)).toBe(4);
+    expect(math.number('3q')).toBe(null);
+  });
 });

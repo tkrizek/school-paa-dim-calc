@@ -268,6 +268,11 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       }
     };
 
+    my.number = function(string) {
+      if (isNaN(string) || string === '') return null;
+      return Math.round(Number(string));
+    };
+
     return my;
   }(math || {}));
 
