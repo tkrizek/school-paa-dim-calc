@@ -33,7 +33,9 @@ angular.module('dim-calc.controllers', [])
 
     $scope.add = function(number) {
       $scope.number = "";
-      if (!number || isNaN(number)) return;
+      number = math.number(number);
+      if (number === null) return;
+      if (number < 0) number *= -1;
       if ($scope.numbers.indexOf(number) == -1) {
         $scope.numbers.push(number);
       }
