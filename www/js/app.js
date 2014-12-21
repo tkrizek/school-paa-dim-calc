@@ -260,6 +260,14 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       return fractions;
     };
 
+    my.congruency = function(a, b, m) {
+      if (this.nsd(a, m) == 1) {
+        var fractions = this.approximateFractions(m, a);
+        return (Math.pow(-1, fractions.length - 2) *
+          fractions[fractions.length - 2].P * b) % m;
+      }
+    };
+
     return my;
   }(math || {}));
 

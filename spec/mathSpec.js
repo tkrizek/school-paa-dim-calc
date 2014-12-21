@@ -78,4 +78,8 @@ describe('math service', function() {
       {P: 29, Q: 11, q: 1},
       {P: 108, Q: 41, q: 3}]);
   });
+
+  it('calculate congruency ax ≅ b (mod m) where gcd(a, m) = 1', function() {
+    expect(math.congruency(285, 313, 169)).toBe(77);
+  });
 });
