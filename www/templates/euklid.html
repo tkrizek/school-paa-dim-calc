@@ -2,9 +2,9 @@
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
-  <ion-content class="has-header" ng-controller="EuklidController">
+  <ion-content class="has-header" ng-controller="EuklidController" scroll="false">
 
-    <div class="list">
+    <!-- <div class="list">
       <div class="item item-input-inset">
         <label class="item item-input">
           <input type="tel" ng-model="a" placeholder="a" ng-enter="calculate(a, b)">
@@ -15,24 +15,55 @@
         <button class="button icon-left ion-calculator button-positive" ng-click="calculate(a, b)">
           Vypočítej
         </button>
-      </div>
+      </div> -->
 
-      <table class="table-numbers" ng-if="euklid">
-        <tr>
-          <th>a</th>
-          <th>b</th>
-          <th>q</th>
-          <th>r</th>
-        </tr>
-        <tr ng-repeat="step in euklid">
-          <td class="a">{{step.a}}</td>
-          <td class="b">{{step.b}}</td>
-          <td class="q">{{step.q}}</td>
-          <td class="r">{{step.r}}</td>
-        </tr>
-      </table>
-
+    <div class="row">
+      <div class="col">
+          <label class="item item-input">
+            <input type="tel" ng-model="a" placeholder="a" ng-enter="calculate(a, b)">
+          </label>
+        </div>
+        <div class="col">
+          <label class="item item-input">
+            <input type="tel" ng-model="b" placeholder="b" ng-enter="calculate(a, b)">
+          </label>
+        </div>
     </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="button button-block icon-left ion-calculator button-positive" ng-click="calculate(a, b)">
+          Vypočítej
+        </button>
+      </div>
+    </div>
+
+    <ion-scroll direction="xy" class="euklid-table" ng-if="euklid">
+      <div class="row">
+        <div class="col">
+          <table class="table-numbers">
+            <tr>
+              <th>a</th>
+              <th></th>
+              <th>b</th>
+              <th></th>
+              <th>q</th>
+              <th></th>
+              <th>r</th>
+            </tr>
+            <tr ng-repeat="step in euklid">
+              <td class="a">{{step.a}}</td>
+              <td>&nbsp;=&nbsp;</td>
+              <td class="b">{{step.b}}</td>
+              <td>&nbsp;×&nbsp;</td>
+              <td class="q">{{step.q}}</td>
+              <td>&nbsp;+&nbsp;</td>
+              <td class="r">{{step.r}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <ion-scroll>
     
   </ion-content>
 </ion-view>

@@ -20,11 +20,22 @@ span.divider
   font-weight: bold;
 }
 
+.table-numbers
+{
+  font-size: 24px;
+}
+
+.table-numbers th
+{
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
 .table-numbers td
 {
   text-align: right;
 }
-
+/*
 .table-numbers td.a:after
 {
   content:"\a0 =\a0 ";
@@ -32,13 +43,13 @@ span.divider
 
 .table-numbers td.b:after
 {
-  content:"\a0 *\a0 ";
+  content:"\a0 \00D7\a0 ";
 }
 
 .table-numbers td.q:after
 {
   content:"\a0 +\a0 ";
-}
+}*/
 
 .row .col .button-block
 {
@@ -49,4 +60,14 @@ span.divider
 {
   margin-right:5px;
   margin-bottom:5px;
+}
+
+.euklid-table {
+  overflow: scroll;
+  white-space: nowrap;
+  position:absolute; 
+  top:140px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
