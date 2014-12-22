@@ -280,10 +280,7 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
       var nsd = this.nsd([a, m]);
 
       if (nsd == 1) {
-        var fractions = this.approximateFractions(m, a);
-
-        return [(Math.pow(-1, fractions.length - 2) *
-          fractions[fractions.length - 2].P * b) % m];
+        return [solveSimpleCongruency(a, b, m)];
       } else {
         if (b % nsd != 0) return false;
 
@@ -291,9 +288,7 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
         b /= nsd;
         m /= nsd;
 
-        var fractions = this.approximateFractions(m, a);
-        var results = [(Math.pow(-1, fractions.length - 2) *
-          fractions[fractions.length - 2].P * b) % m];
+        var results = [solveSimpleCongruency(a, b, m)];
 
         for (var i = 1; i < nsd; i++) {
           results.push(results[0] + i * m);
@@ -301,8 +296,12 @@ angular.module('dim-calc', ['ionic', 'dim-calc.controllers'])
 
         return results;
       }
+    };
 
-      return false;
+    var solveSimpleCongruency = function(a, b, m) {
+      var fractions = my.approximateFractions(m, a);
+      return (Math.pow(-1, fractions.length - 2) *
+        fractions[fractions.length - 2].P * b) % m;
     };
 
     my.number = function(string) {
