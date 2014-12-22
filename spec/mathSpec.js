@@ -102,4 +102,8 @@ describe('math service', function() {
     expect(math.number(3.54)).toBe(4);
     expect(math.number('3q')).toBe(null);
   });
+
+  it('calculate congruency ax ≅ b (mod m) where gcd(a, m) > 1', function() {
+    expect(math.congruency(3, 3, 6)).toEqual([1,3,5]);
+  });
 });
