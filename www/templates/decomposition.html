@@ -7,21 +7,21 @@
     <div class="row">
       <div class="col">
           <label class="item item-input">
-            <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="decompose(number)">
+            <input type="tel" ng-model="values.number" placeholder="Číslo" ng-enter="decompose()">
           </label>
         </div>
         <div class="col">
-          <button class="button button-block icon-left ion-calculator button-positive" ng-click="decompose(number)">
+          <button class="button button-block icon-left ion-calculator button-positive" ng-click="decompose()">
             Vypočítej
           </button>
         </div>
     </div>
 
-    <div class="row" ng-if="calculated != undefined">
+    <div class="row" ng-if="values.calculated != undefined">
       <h4 class="col">
-        {{calculated}} =
-        <span class="decomposed" ng-repeat="prime in primes">
-          {{prime}}<sup>{{multiples[prime]}}</sup>
+        {{values.calculated}} =
+        <span class="decomposed" ng-repeat="prime in values.primes">
+          {{prime}}<sup>{{values.multiples[prime]}}</sup>
         </span>
       </h4>
     </div>

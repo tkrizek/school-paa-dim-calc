@@ -4,85 +4,100 @@ angular.module('dim-calc.controllers', [])
 
 .controller('PrimeCtrl', ['$scope', 'math',
   function($scope, math) {
-    $scope.isPrime = function(number) {
-      return math.isPrime(number);
-    }
 
-    $scope.decompose = function(number) {
-      $scope.number = "";  // clear input
+    $scope.decompose = function() {
+      var number = math.number($scope.values.number);
+      $scope.values.number = "";  // clear input
 
-      // convert to integer and validate
-      var number = math.number(number);
-      if (number === null) {
+      // validate
+      if (number === null || number === 1) {
         return;
       }
 
       // set values for view
       var primes = math.decompose(number);
-      $scope.primes = Object.keys(primes);
-      $scope.multiples = primes;
-      $scope.calculated = number;
+      $scope.values.primes = Object.keys(primes);
+      $scope.values.multiples = primes;
+      $scope.values.calculated = number;
     }
   }])
 
 .controller('NsdNsnController', ['$scope', 'math',
   function($scope, math) {
-    $scope.numbers = [];
 
-    var calculate = function calculate() {
-      $scope.nsd = math.nsd($scope.numbers);
-      $scope.nsn = math.nsn($scope.numbers);
+    $scope.values = {
+      numbers: []
     };
 
-    $scope.add = function(number) {
-      $scope.number = "";  // clear input
-      number = math.number(number);
-      if (number === null) return;
+    var calculate = function calculate() {
+      $scope.values.nsd = math.nsd($scope.values.numbers);
+      $scope.values.nsn = math.nsn($scope.values.numbers);
+    };
+
+    $scope.add = function() {
+      var number = math.number($scope.values.number);
+      $scope.values.number = "";  // clear input
+
+      if (number === null || number === 0) return;
       if (number < 0) number *= -1;  // treat negative integers as positive
       
       // add number to array if not present
-      if ($scope.numbers.indexOf(number) == -1) {
-        $scope.numbers.push(number);
+      if ($scope.values.numbers.indexOf(number) == -1) {
+        $scope.values.numbers.push(number);
       }
 
       calculate();
     };
 
     $scope.remove = function(number) {
-      var index = $scope.numbers.indexOf(number);
+      var index = $scope.values.numbers.indexOf(number);
       if (index > -1) {
-        $scope.numbers.splice(index, 1);
+        $scope.values.numbers.splice(index, 1);
         calculate();
       }
     };
 
     $scope.removeAll = function() {
-      $scope.numbers = [];
+      $scope.values.numbers = [];
     };
   }])
 
 .controller('EuklidController', ['$scope', 'math',
   function($scope, math) {
-    $scope.calculate = function(a, b) {
-      a = math.number(a);
-      b = math.number(b);
 
-      // validate numbers
-      if (a === null || a < 0) {
-        $scope.a = "";  // clear input
-        return;
+    $scope.values = {};
+
+    $scope.calculate = function() {
+      convertNumbers();
+      if (!validateNumbers()) return;
+
+      $scope.values.euklid = math.euklid($scope.values.a, $scope.values.b);
+    };
+
+    var convertNumbers = function() {
+      $scope.values.a = math.number($scope.values.a);
+      $scope.values.b = math.number($scope.values.b);
+    };
+
+    var validateNumbers = function() {
+      var isValid = true;
+
+      if ($scope.values.a === null || $scope.values.a < 0) {
+        $scope.values.a = "";  // clear input
+        isValid = false;
       }
-      if (b === null || b <= 0) {
-        $scope.b = "";  // clear input
-        return;
+      if ($scope.values.b === null || $scope.values.b <= 0) {
+        $scope.values.b = "";  // clear input
+        isValid = false;
       }
 
-      $scope.euklid = math.euklid(a, b);
+      return isValid;
     };
   }])
 
 .controller('ApproximateFractionsController', ['$scope', 'math',
   function($scope, math) {
+
     $scope.values = {
       step: null,
       maxStep: null,
@@ -114,25 +129,34 @@ angular.module('dim-calc.controllers', [])
     };
 
     $scope.calculate = function() {
-      // convert to numbers
-      $scope.values.numerator = math.number($scope.values.numerator);
-      $scope.values.divisor = math.number($scope.values.divisor);
-
-      // validate numbers
-      if ($scope.values.numerator === null || $scope.values.numerator < 0) {
-        $scope.values.numerator = "";
-        return;
-      }
-      if ($scope.values.divisor === null || $scope.values.divisor <= 0) {
-        $scope.values.divisor = "";
-        return;
-      };
+      convertNumbers();
+      if (!validateNumbers()) return;
 
       // proceed with calculation
       fractions = math.approximateFractions($scope.values.numerator,
         $scope.values.divisor);
       $scope.values.maxStep = fractions.length - 1;
       $scope.changeStep($scope.values.step || $scope.values.maxStep);
+    };
+
+    var convertNumbers = function() {
+      $scope.values.numerator = math.number($scope.values.numerator);
+      $scope.values.divisor = math.number($scope.values.divisor);
+    };
+
+    var validateNumbers = function() {
+      var isValid = true;
+
+      if ($scope.values.numerator === null || $scope.values.numerator < 0) {
+        $scope.values.numerator = "";
+        isValid = false;
+      }
+      if ($scope.values.divisor === null || $scope.values.divisor <= 0) {
+        $scope.values.divisor = "";
+        isValid = false;
+      }
+
+      return isValid;
     };
   }])
 
@@ -167,21 +191,21 @@ angular.module('dim-calc.controllers', [])
     };
 
     var validateNumbers = function() {
-      var valid = true;
+      var isValid = true;
 
       if ($scope.values.a === null || $scope.values.a <= 0) {
         $scope.values.a = "";
-        valid = false;
+        isValid = false;
       }
       if ($scope.values.b === null || $scope.values.b < 0) {
         $scope.values.b = "";
-        valid = false;
+        isValid = false;
       }
       if ($scope.values.m === null || $scope.values.m <= 0) {
         $scope.values.m = "";
-        valid = false;
+        isValid = false;
       }
 
-      return valid;
+      return isValid;
     };
   }]);

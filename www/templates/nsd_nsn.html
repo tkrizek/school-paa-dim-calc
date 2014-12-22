@@ -7,33 +7,33 @@
     <div class="row">
       <div class="col">
           <label class="item item-input">
-            <input type="tel" ng-model="number" placeholder="Číslo" ng-enter="add(number)">
+            <input type="tel" ng-model="values.number" placeholder="Číslo" ng-enter="add()">
           </label>
         </div>
         <div class="col">
-          <button class="button button-block button-positive icon-left ion-calculator" ng-click="add(number)">
+          <button class="button button-block button-positive icon-left ion-calculator" ng-click="add()">
             Přidej
           </button>
         </div>
     </div>
 
-    <div class="row" ng-if="numbers.length > 0">
-      <h4 class="col">NSD: {{nsd}}</h4>
+    <div class="row" ng-if="values.numbers.length > 0">
+      <h4 class="col">NSD: {{values.nsd}}</h4>
     </div>
-    <div class="row" ng-if="numbers.length > 0">
-      <h4 class="col">NSN: {{nsn}}</h4>
+    <div class="row" ng-if="values.numbers.length > 0">
+      <h4 class="col">NSN: {{values.nsn}}</h4>
     </div>
     
-    <div class="row" ng-if="numbers.length > 0">
+    <div class="row" ng-if="values.numbers.length > 0">
       <div class="col">
         <button class="button button-block button-outline button-assertive icon-left ion-trash-a" ng-click="removeAll()">
           Smazat vše
         </button>
       </div>
     </div>
-    <div class="row" ng-if="numbers.length > 0">
+    <div class="row" ng-if="values.numbers.length > 0">
       <div class="col">
-        <button class="button button-margin button-outline button-dark icon-right ion-close-round" ng-click="remove(number)" ng-repeat="number in numbers">
+        <button class="button button-margin button-outline button-dark icon-right ion-close-round" ng-click="remove(number)" ng-repeat="number in values.numbers">
           {{number}} 
         </button>
       </div>

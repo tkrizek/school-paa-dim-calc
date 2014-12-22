@@ -3,7 +3,6 @@
 describe('math service', function() {
   var math;
 
-  //you need to indicate your module in a test
   beforeEach(module('dim-calc'));
 
   beforeEach(inject(function(_math_) {

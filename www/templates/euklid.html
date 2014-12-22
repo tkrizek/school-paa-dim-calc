@@ -7,25 +7,25 @@
     <div class="row">
       <div class="col">
           <label class="item item-input">
-            <input type="tel" ng-model="a" placeholder="a" ng-enter="calculate(a, b)">
+            <input type="tel" ng-model="values.a" placeholder="a" ng-enter="calculate()">
           </label>
         </div>
         <div class="col">
           <label class="item item-input">
-            <input type="tel" ng-model="b" placeholder="b" ng-enter="calculate(a, b)">
+            <input type="tel" ng-model="values.b" placeholder="b" ng-enter="calculate()">
           </label>
         </div>
     </div>
 
     <div class="row">
       <div class="col">
-        <button class="button button-block icon-left ion-calculator button-positive" ng-click="calculate(a, b)">
+        <button class="button button-block icon-left ion-calculator button-positive" ng-click="calculate()">
           Vypočítej
         </button>
       </div>
     </div>
 
-    <ion-scroll direction="xy" class="euklid-table" ng-if="euklid">
+    <ion-scroll direction="xy" class="euklid-table" ng-if="values.euklid">
       <div class="row">
         <div class="col">
           <table class="table-numbers">
@@ -38,7 +38,7 @@
               <th></th>
               <th>r</th>
             </tr>
-            <tr ng-repeat="step in euklid">
+            <tr ng-repeat="step in values.euklid">
               <td class="a">{{step.a}}</td>
               <td>&nbsp;=&nbsp;</td>
               <td class="b">{{step.b}}</td>
